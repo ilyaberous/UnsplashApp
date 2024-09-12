@@ -12,7 +12,7 @@ class DetailViewController: UIViewController {
     let viewModel: DetailViewModel
     
     private lazy var image: UIImageView = {
-       let imgV = UIImageView()
+        let imgV = UIImageView()
         imgV.contentMode = .scaleAspectFill
         imgV.clipsToBounds = true
         imgV.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
     }()
     
     private lazy var username: UILabel = {
-       let username = UILabel()
+        let username = UILabel()
         username.font = .systemFont(ofSize: 16, weight: .medium)
         username.textColor = .systemGray
         username.translatesAutoresizingMaskIntoConstraints = false
@@ -45,7 +45,7 @@ class DetailViewController: UIViewController {
     }()
     
     private lazy var hStack: UIStackView = {
-       let stack = UIStackView(arrangedSubviews: [authorName, username])
+        let stack = UIStackView(arrangedSubviews: [authorName, username])
         stack.axis = .horizontal
         stack.spacing = 4
         stack.distribution = .equalCentering
@@ -61,7 +61,7 @@ class DetailViewController: UIViewController {
     }()
     
     private lazy var errorView: ErrorView = {
-       let error = ErrorView()
+        let error = ErrorView()
         error.translatesAutoresizingMaskIntoConstraints = false
         error.isHidden = true
         error.delegate = self
@@ -83,7 +83,35 @@ class DetailViewController: UIViewController {
         configure()
     }
     
+    @objc private func rightButtonAction(sender: UIBarButtonItem) {
+        guard let image = image.image else { return }
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+    }
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            let ac = UIAlertController(title: "Save error", message: error.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved!", message: "Изображение успешно сохранено в галерею", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
+    
+    private func configureNavBar() {
+        let rightButtonItem = UIBarButtonItem.init(
+            title: "Сохранить",
+            style: .done,
+            target: self,
+            action: #selector(rightButtonAction)
+        )
+        self.navigationItem.rightBarButtonItem = rightButtonItem
+    }
+    
     private func setupUI() {
+        configureNavBar()
         view.backgroundColor = .systemBackground
         view.addSubview(image)
         view.addSubview(descript)
@@ -122,6 +150,7 @@ class DetailViewController: UIViewController {
         loadingIndicator.startAnimating()
         image.loadImageFromURL(urlString: viewModel.detailImageItem.img) { [weak self] _ in
             self?.viewModel.state = .error
+            print("DEBUG: toggle to error state!!!")
         }
         descript.text = viewModel.detailImageItem.description
         authorName.text = "Author: \(viewModel.detailImageItem.firstName) \(viewModel.detailImageItem.lastName)"

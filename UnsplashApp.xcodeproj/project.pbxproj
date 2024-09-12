@@ -532,6 +532,7 @@
 				DEVELOPMENT_TEAM = 6KLWRFJA68;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UnsplashApp/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Приложению необходио разрешение добавлять фотографии в галерею... ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
@@ -560,6 +561,7 @@
 				DEVELOPMENT_TEAM = 6KLWRFJA68;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UnsplashApp/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Приложению необходио разрешение добавлять фотографии в галерею... ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
