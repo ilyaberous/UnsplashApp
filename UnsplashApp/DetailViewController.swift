@@ -94,7 +94,7 @@ class DetailViewController: UIViewController {
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
         } else {
-            let ac = UIAlertController(title: "Saved!", message: "Изображение успешно сохранено в галерею", preferredStyle: .alert)
+            let ac = UIAlertController(title: "Сохранено!", message: "Изображение успешно сохранено в галерею", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
         }
@@ -141,17 +141,20 @@ class DetailViewController: UIViewController {
             errorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             errorView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             errorView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-           // hStack.trailingAnchor.constraint(greaterThanOrEqualTo: view.trailingAnchor, constant: -16),
             
         ])
     }
     
     func configure() {
-        loadingIndicator.startAnimating()
-        image.loadImageFromURL(urlString: viewModel.detailImageItem.img) { [weak self] _ in
+        viewModel.state = .loading
+        image.loadImageFromURL(urlString: viewModel.detailImageItem.img) { [weak self] error in
+            guard error != nil else {
+                self?.viewModel.state = .ok
+                return
+            }
             self?.viewModel.state = .error
-            print("DEBUG: toggle to error state!!!")
         }
+        
         descript.text = viewModel.detailImageItem.description
         authorName.text = "Author: \(viewModel.detailImageItem.firstName) \(viewModel.detailImageItem.lastName)"
         username.text = "(@\(viewModel.detailImageItem.username))"

@@ -80,7 +80,6 @@ final class MainViewModel {
                 
             case .failure(let error):
                 self?.state = .error
-                print("DEBUG: Nastyaaa \(error)")
             }
         }
     }

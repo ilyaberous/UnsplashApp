@@ -208,7 +208,6 @@ extension MainViewController: UICollectionViewDelegate {
             searchBar.searchBar.text = lastHints[indexPath.row]
             searchBarSearchButtonClicked(searchBar.searchBar)
         } else if collectionView == self.hintsCollectionView {
-            print("DEBUG: filtered hints!!")
             let filteredHints = viewModel.historyManager.filteredHints
             searchBar.searchBar.text = filteredHints[indexPath.row]
             searchBarSearchButtonClicked(searchBar.searchBar)
@@ -226,7 +225,6 @@ extension MainViewController: UICollectionViewDelegate {
 extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
-            print("DEBUG: empry text!!")
             hintsCollectionView.isHidden = true
             historyHintsCollectionView.isHidden = false
             return
@@ -254,7 +252,6 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("DEBUG: \(viewModel.state)")
         historyHintsCollectionView.isHidden = true
         hintsCollectionView.isHidden = true
     }

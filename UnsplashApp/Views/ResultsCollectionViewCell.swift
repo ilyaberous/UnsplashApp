@@ -85,8 +85,11 @@ final class ResultsCollectionViewCell: UICollectionViewCell {
         descript.text = resultItem.description
         username.text = "@" + resultItem.username
         image.loadImageFromURL(urlString: resultItem.img) { error in
-            print("DEBUG: loadImage error")
+            guard error == nil else {
+                print("DEBUG: loadImage error")
+                return
+            }
+            print("DEBUG: loadImage successe")
         }
-        //to do image!
     }
 }

@@ -14,7 +14,7 @@ let imageCache = NSCache<NSString, UIImage>()
 extension UIImageView {
     @discardableResult
     func loadImageFromURL(urlString: String,
-                          placeholder: UIImage? = nil, completion: @escaping (Error) -> ()) ->
+                          placeholder: UIImage? = nil, completion: @escaping (Error?) -> ()) ->
     URLSessionDataTask? {
         self.image = nil
         let key = NSString(string: urlString)
@@ -34,11 +34,13 @@ extension UIImageView {
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             DispatchQueue.main.async {
                 if let data = data,
+                   error == nil,
                    let downloadedImage = UIImage(data: data) {
                     imageCache.setObject(downloadedImage,
                                          forKey:
                                             NSString(string: urlString))
                     self.image = downloadedImage
+                    completion(nil)
                 } else if let error = error {
                     completion(error)
                 }
