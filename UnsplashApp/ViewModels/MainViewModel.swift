@@ -40,7 +40,7 @@ final class MainViewModel {
         .compactMap { $0 }
     }
     
-    let apiService: SplashAPIService
+    let apiService: UnsplashAPIService
     let historyManager: HistoryManager
     
     var state: MainScreenState = .ok {
@@ -49,7 +49,7 @@ final class MainViewModel {
         }
     }
     
-    init(apiService: SplashAPIService, historyManager: HistoryManager) {
+    init(apiService: UnsplashAPIService, historyManager: HistoryManager) {
         self.apiService = apiService
         self.historyManager = historyManager
     }
@@ -66,7 +66,7 @@ final class MainViewModel {
     
     func getImages(on textRequest: String, page: Int) {
         state = .loading
-        let endpoint = SplashAPIEndpoint.getImages(query: textRequest, page: page, itemsNumber: 30)
+        let endpoint = UnsplashAPIEndpoint.getImages(query: textRequest, page: page, itemsNumber: 30)
         
         apiService.getResults(from: endpoint) { [weak self] (response: Result<UnsplashSearchResponse, Error>) in
             switch response {

@@ -17,9 +17,9 @@
 		092DEF022C8F93030054A69A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092DEF012C8F93030054A69A /* MainViewController.swift */; };
 		094D1F862C92118D0053672C /* ResultsCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094D1F852C92118D0053672C /* ResultsCollectionItem.swift */; };
 		094D1F882C9212440053672C /* ResultsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094D1F872C9212440053672C /* ResultsCollectionViewCell.swift */; };
-		09A3393A2C92D60E00A67254 /* SplashAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A339392C92D60E00A67254 /* SplashAPIService.swift */; };
+		09A3393A2C92D60E00A67254 /* UnsplashAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A339392C92D60E00A67254 /* UnsplashAPIService.swift */; };
 		09A3393C2C92DF8100A67254 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A3393B2C92DF8100A67254 /* APIModel.swift */; };
-		09A3393E2C92E48800A67254 /* SplashApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A3393D2C92E48800A67254 /* SplashApiModels.swift */; };
+		09A3393E2C92E48800A67254 /* UnsplashApiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A3393D2C92E48800A67254 /* UnsplashApiModels.swift */; };
 		09F05D2E2C931017001B5430 /* UIImageView+downloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F05D2D2C931017001B5430 /* UIImageView+downloadImage.swift */; };
 		09F05D302C932B8D001B5430 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F05D2F2C932B8D001B5430 /* ErrorView.swift */; };
 		09F05D322C93498C001B5430 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F05D312C93498C001B5430 /* DetailViewController.swift */; };
@@ -61,9 +61,9 @@
 		092DEF012C8F93030054A69A /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		094D1F852C92118D0053672C /* ResultsCollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCollectionItem.swift; sourceTree = "<group>"; };
 		094D1F872C9212440053672C /* ResultsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCollectionViewCell.swift; sourceTree = "<group>"; };
-		09A339392C92D60E00A67254 /* SplashAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAPIService.swift; sourceTree = "<group>"; };
+		09A339392C92D60E00A67254 /* UnsplashAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPIService.swift; sourceTree = "<group>"; };
 		09A3393B2C92DF8100A67254 /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
-		09A3393D2C92E48800A67254 /* SplashApiModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashApiModels.swift; sourceTree = "<group>"; };
+		09A3393D2C92E48800A67254 /* UnsplashApiModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashApiModels.swift; sourceTree = "<group>"; };
 		09F05D2D2C931017001B5430 /* UIImageView+downloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+downloadImage.swift"; sourceTree = "<group>"; };
 		09F05D2F2C932B8D001B5430 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		09F05D312C93498C001B5430 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -121,13 +121,12 @@
 		092DEECF2C8F8A260054A69A /* UnsplashApp */ = {
 			isa = PBXGroup;
 			children = (
+				09F7924D2C9394A200CD50F6 /* Controllers */,
 				09F05D2C2C931000001B5430 /* Helpers */,
 				09A339382C92D5E700A67254 /* Services */,
 				09FCECA42C9064DF00907196 /* Models */,
 				09FCECA32C9064D900907196 /* Views */,
 				09FCECA22C9064D300907196 /* ViewModels */,
-				092DEF012C8F93030054A69A /* MainViewController.swift */,
-				09F05D312C93498C001B5430 /* DetailViewController.swift */,
 				092DEF002C8F8BDD0054A69A /* Resources */,
 				092DEEDE2C8F8A270054A69A /* Info.plist */,
 			);
@@ -165,7 +164,7 @@
 		09A339382C92D5E700A67254 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				09A339392C92D60E00A67254 /* SplashAPIService.swift */,
+				09A339392C92D60E00A67254 /* UnsplashAPIService.swift */,
 				09F7924B2C93676F00CD50F6 /* HistoryManager.swift */,
 			);
 			path = Services;
@@ -175,7 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				09A3393B2C92DF8100A67254 /* APIModel.swift */,
-				09A3393D2C92E48800A67254 /* SplashApiModels.swift */,
+				09A3393D2C92E48800A67254 /* UnsplashApiModels.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -186,6 +185,15 @@
 				09F05D2D2C931017001B5430 /* UIImageView+downloadImage.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		09F7924D2C9394A200CD50F6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				092DEF012C8F93030054A69A /* MainViewController.swift */,
+				09F05D312C93498C001B5430 /* DetailViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		09FCECA22C9064D300907196 /* ViewModels */ = {
@@ -353,8 +361,8 @@
 				094D1F882C9212440053672C /* ResultsCollectionViewCell.swift in Sources */,
 				09A3393C2C92DF8100A67254 /* APIModel.swift in Sources */,
 				09FCECA82C90A37300907196 /* Hint.swift in Sources */,
-				09A3393E2C92E48800A67254 /* SplashApiModels.swift in Sources */,
-				09A3393A2C92D60E00A67254 /* SplashAPIService.swift in Sources */,
+				09A3393E2C92E48800A67254 /* UnsplashApiModels.swift in Sources */,
+				09A3393A2C92D60E00A67254 /* UnsplashAPIService.swift in Sources */,
 				09F7924C2C93676F00CD50F6 /* HistoryManager.swift in Sources */,
 				092DEF022C8F93030054A69A /* MainViewController.swift in Sources */,
 				09F05D302C932B8D001B5430 /* ErrorView.swift in Sources */,

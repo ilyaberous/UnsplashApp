@@ -13,7 +13,7 @@ protocol APIService: AnyObject {
     func getResults(from endpoint: API, completion: @escaping (Result<Success, Error>) -> ())
 }
 
-enum SplashAPIEndpoint: API {
+enum UnsplashAPIEndpoint: API {
     case getImages(query: String, page: Int, itemsNumber: Int)
     var scheme: HTTPScheme {
         switch self {
@@ -58,7 +58,7 @@ enum SplashAPIEndpoint: API {
 }
 
 
-final class SplashAPIService: APIService {
+final class UnsplashAPIService: APIService {
     
     internal func buildURL(endpoint: API) -> URLComponents {
         var components = URLComponents()
